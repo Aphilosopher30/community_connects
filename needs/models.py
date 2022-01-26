@@ -12,7 +12,10 @@ class Need(models.Model):
     state = models.CharField(max_length=200)
     zip_code = models.CharField(max_length=200)
 
-    # t.integer "supporters_needed"
-    # t.integer "status"
-    # t.datetime "created_at", null: false
-    # t.datetime "updated_at", null: false
+    supporters_needed = models.IntegerField(null=True)
+    supporters_needed = models.IntegerField(null=True)
+
+    # def __str__(self):
+    #     return self.title
+
+class Need(models.Model):
