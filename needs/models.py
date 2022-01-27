@@ -21,16 +21,13 @@ class Need(models.Model):
 class Categories(models.Model):
     tag = models.CharField(max_length=200)
 
+class NeedCategories(models.Model):
+    category = models.ForeignKey( Categories, on_delete = models.CASCADE)
+    need = models.ForeignKey( Need, on_delete = models.CASCADE)
 
 
 
 
-
-
-
-#   create_table "categories", force: :cascade do |t|
-#     t.string "tag"
-#   end
 #
 #   create_table "need_categories", force: :cascade do |t|
 #     t.integer "category_id"
