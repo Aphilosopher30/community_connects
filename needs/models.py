@@ -18,4 +18,33 @@ class Need(models.Model):
     # def __str__(self):
     #     return self.title
 
-class Need(models.Model):
+class Categories(models.Model):
+    tag = models.CharField(max_length=200)
+
+
+
+
+
+
+
+
+#   create_table "categories", force: :cascade do |t|
+#     t.string "tag"
+#   end
+#
+#   create_table "need_categories", force: :cascade do |t|
+#     t.integer "category_id"
+#     t.integer "need_id"
+#   end
+#
+#   create_table "supporters", force: :cascade do |t|
+#     t.string "name"
+#     t.string "email"
+#     t.bigint "need_id"
+#     t.datetime "created_at", null: false
+#     t.datetime "updated_at", null: false
+#     t.index ["need_id"], name: "index_supporters_on_need_id"
+#   end
+#
+#   add_foreign_key "supporters", "needs"
+# end
