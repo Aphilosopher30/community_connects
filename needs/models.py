@@ -27,13 +27,6 @@ class NeedCategories(models.Model):
 
 
 
-
-#
-#   create_table "need_categories", force: :cascade do |t|
-#     t.integer "category_id"
-#     t.integer "need_id"
-#   end
-#
 #   create_table "supporters", force: :cascade do |t|
 #     t.string "name"
 #     t.string "email"
@@ -43,5 +36,3 @@ class NeedCategories(models.Model):
 #     t.index ["need_id"], name: "index_supporters_on_need_id"
 #   end
 #
-#   add_foreign_key "supporters", "needs"
-# end
