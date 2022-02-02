@@ -13,7 +13,7 @@ class Need(models.Model):
     zip_code = models.CharField(max_length=200)
 
     supporters_needed = models.IntegerField(null=True)
-    supporters_needed = models.IntegerField(null=True)
+    # supporters_needed = models.IntegerField(null=True)
 
     # def __str__(self):
     #     return self.title
@@ -26,13 +26,6 @@ class NeedCategories(models.Model):
     need = models.ForeignKey( Need, on_delete = models.CASCADE)
 
 
-
-#   create_table "supporters", force: :cascade do |t|
-#     t.string "name"
-#     t.string "email"
-#     t.bigint "need_id"
-#     t.datetime "created_at", null: false
-#     t.datetime "updated_at", null: false
-#     t.index ["need_id"], name: "index_supporters_on_need_id"
-#   end
-#
+# class Supporters(models.Model):
+#     name = models.CharField(max_length=200)
+#     email = models.CharField(max_length=200)
