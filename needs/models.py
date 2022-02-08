@@ -33,6 +33,7 @@ class NeedCategories(models.Model):
     need = models.ForeignKey( Need, on_delete = models.CASCADE)
 
 
+
 # class Supporters(models.Model):
 #     name = models.CharField(max_length=200)
 #     email = models.CharField(max_length=200)
