@@ -23,6 +23,11 @@ class Need(models.Model):
 class Categories(models.Model):
     tag = models.CharField(max_length=200)
 
+    def __str__(self):
+        return self.tag
+
+
+
 class NeedCategories(models.Model):
     category = models.ForeignKey( Categories, on_delete = models.CASCADE)
     need = models.ForeignKey( Need, on_delete = models.CASCADE)
