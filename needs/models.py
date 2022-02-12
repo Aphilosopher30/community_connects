@@ -9,11 +9,10 @@ class Need(models.Model):
 
     supporters_needed = models.IntegerField(null=True)
 
-
-    end_time = models.CharField(max_length=200)
-    city = models.CharField(max_length=200)
-    state = models.CharField(max_length=200)
-    zip_code = models.CharField(max_length=200)
+    # end_time = models.CharField(max_length=200)
+    # city = models.CharField(max_length=200)
+    # state = models.CharField(max_length=200)
+    # zip_code = models.CharField(max_length=200)
     # supporters_needed = models.IntegerField(null=True)
 
     def __str__(self):
