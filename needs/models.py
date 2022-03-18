@@ -10,7 +10,7 @@ class Need(models.Model):
     time_frame = models.CharField(max_length=200)
 
     notes = models.CharField(max_length=1000, null=True)
-    adress = models.CharField(max_length=200, null=True)
+    location = models.CharField(max_length=200, null=True)
     contact_info = models.CharField(max_length=200, null=True)
 
     # status:  (enum. [active, inactive])
