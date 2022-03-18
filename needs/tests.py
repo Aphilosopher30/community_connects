@@ -12,7 +12,7 @@ class TestNeedModel(TestCase):
                                     time_frame = "noon",
                                     supporters_needed = 5,
                                     notes = "notes notes notes",
-                                    adress = "here",
+                                    location = "here",
                                     contact_info = "phone number or email"
                                     )
 
@@ -22,7 +22,7 @@ class TestNeedModel(TestCase):
         self.assertEqual(test.time_frame, "noon")
         self.assertEqual(test.supporters_needed, 5)
         self.assertEqual(test.notes, "notes notes notes")
-        self.assertEqual(test.adress, "here")
+        self.assertEqual(test.location, "here")
         self.assertEqual(test.contact_info, "phone number or email")
 
 
