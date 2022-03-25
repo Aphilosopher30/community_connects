@@ -10,3 +10,5 @@ class NeedsTypes(DjangoObjectType):
 
 class Query(graphene.ObjectType):
     all_needs = graphene.List(NeedsType)
+
+schema = graphene.Schema(query=Query)
