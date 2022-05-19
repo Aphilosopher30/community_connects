@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class NeedsConfig(AppConfig):
+class NeedConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'needs'
+    name = 'need'

@@ -15,7 +15,6 @@ class Need(models.Model):
 
     # status:  (enum. [active, inactive])
 
-
     def __str__(self):
         return self.title
 
