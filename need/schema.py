@@ -8,11 +8,6 @@ class NeedsType(DjangoObjectType):
         model = Need
         fields = ("id", "title", "description", "supporters_needed", "time_frame", "notes", "location", "contact_info")
 
-
-class Query(graphene.ObjectType):
-    all_needs = graphene.List(NeedsType)
-
-
 class NeedsMutation(graphene.Mutation):
 
     class Arguments:
@@ -23,13 +18,9 @@ class NeedsMutation(graphene.Mutation):
     @classmethod
     def mutate(cls, root, info, title): # reserch what root and info are for
         need = Need(title=title)
-        # breakpoint()
         need.save()
 
         return NeedsMutation(need=need)
-
-
-
 
 
 class CategoriesType(DjangoObjectType):
@@ -47,20 +38,24 @@ class CategoriesMutation(graphene.Mutation):
     @classmethod
     def mutate(cls, root, info, tag): # reserch what root and info are for
         category = Categories(tag=tag)
-#         # breakpoint()
 
         category.save()
 
         return CategoriesMutation(category=category)
 
-
-
 class Mutation(graphene.ObjectType):
     add_need = NeedsMutation.Field()
     add_category = CategoriesMutation.Field()
 
-    # breakpoint()
+class Query(graphene.ObjectType):
+
+    all_needs = graphene.List(NeedsType)
+    def resolve_all_needs(root, info):
+        return Need.objects.all()
 
 
 
-schema = graphene.Schema(query=Query, mutation = Mutation)
+
+
+# schema = graphene.Schema(query=Query, mutation = Mutation)
+schema = graphene.Schema(query=Query)
