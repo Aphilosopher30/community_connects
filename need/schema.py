@@ -53,9 +53,25 @@ class Query(graphene.ObjectType):
     def resolve_all_needs(root, info):
         return Need.objects.all()
 
+    get_need = graphene.Field(NeedsType, id=graphene.Int())
+    def resolve_get_need(root, info, id):
+        return Need.objects.get(pk=id)
 
 
 
 
-# schema = graphene.Schema(query=Query, mutation = Mutation)
-schema = graphene.Schema(query=Query)
+schema = graphene.Schema(query=Query, mutation = Mutation)
+# schema = graphene.Schema(query=Query)
+
+
+# needs have persons
+# persons have catagories they volunire for (many to many)
+# name, contact_info (phone_text, phone, email, adress,) date_created_time_stamp, last_modified_time_stamp
+
+
+# people
+# need by id: or other search mechanism
+# frontend
+# lader: administrater privilages
+# later: delete
+# later: editing -
