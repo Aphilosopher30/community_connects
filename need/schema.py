@@ -1,6 +1,6 @@
 import graphene
 from graphene_django import DjangoObjectType
-from .models import Need, Categories
+from .models import Need, Categories, Supporters
 
 
 class NeedsType(DjangoObjectType):
@@ -9,7 +9,6 @@ class NeedsType(DjangoObjectType):
         fields = ("id", "title", "description", "supporters_needed", "time_frame", "notes", "location", "contact_info")
 
 class NeedsMutation(graphene.Mutation):
-
     class Arguments:
         title = graphene.String(required=True)
 
@@ -43,6 +42,28 @@ class CategoriesMutation(graphene.Mutation):
 
         return CategoriesMutation(category=category)
 
+
+class SupportersType(DjangoObjectType):
+    class Meta:
+        model = Supporters
+        fields = ("id", "first_name", "last_name", "address", "email", "phone", "phone_text")
+
+# class SupportersMutation(graphene.Mutation):
+#     class Arguments:
+#         title = graphene.String(required=True)
+#
+#     supporter = graphene.Field(NeedsType)
+#
+#     @classmethod
+#     def mutate(cls, root, info, first_name, last_name): # reserch what root and info are for
+#         supporter = Supporter(first_name=first_name, last_name=last_name)
+#         supporter.save()
+#
+#         return SupportersMutation(supporters=supporters)
+
+
+
+
 class Mutation(graphene.ObjectType):
     add_need = NeedsMutation.Field()
     add_category = CategoriesMutation.Field()
@@ -56,6 +77,11 @@ class Query(graphene.ObjectType):
     get_need = graphene.Field(NeedsType, id=graphene.Int())
     def resolve_get_need(root, info, id):
         return Need.objects.get(pk=id)
+
+    all_supporters = graphene.List(SupportersType)
+    def resolve_all_supporters(root, info):
+        return Supporters.objects.all()
+
 
 
 
