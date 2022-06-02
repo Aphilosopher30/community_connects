@@ -37,8 +37,8 @@ class Supporters(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=1000)
 
-    address = models.CharField(max_length=200)
     email = models.CharField(max_length=200)
+    address = models.CharField(max_length=200, null=True)
 
     phone = models.CharField(max_length=2000, null=True)
     phone_text = models.CharField(max_length=200, null=True)

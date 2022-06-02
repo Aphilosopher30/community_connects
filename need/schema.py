@@ -52,15 +52,20 @@ class SupportersType(DjangoObjectType):
 class SupportersMutation(graphene.Mutation):
 
     class Arguments:
-        tag = graphene.String(required=True)
+        email  = graphene.String(required=True)
+        first_name  = graphene.String(required=True)
+        last_name = graphene.String(required=True)
+        address = graphene.String(required=True)
+        phone = graphene.String(required=False)
+        phone_text = graphene.String(required=False)
 
     supporter = graphene.Field(SupportersType)
 
     @classmethod
-    def mutate(cls, root, info, first_name, last_name): # reserch what root and info are for
-        supporter = Supporters(email=email)
+    def mutate(cls, root, info, first_name, last_name, email, address, phone, phone_text): # reserch what root and info are for
+        supporter = Supporters(first_name=first_name, last_name=last_name, email=email, address=address, phone=phone, phone_text=phone_text)
         supporter.save()
-        return SupporterMutation(supporter=supporter)
+        return SupportersMutation(supporter=supporter)
 
 
 
