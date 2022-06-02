@@ -48,18 +48,20 @@ class SupportersType(DjangoObjectType):
         model = Supporters
         fields = ("id", "first_name", "last_name", "address", "email", "phone", "phone_text")
 
-# class SupportersMutation(graphene.Mutation):
-#     class Arguments:
-#         title = graphene.String(required=True)
-#
-#     supporter = graphene.Field(NeedsType)
-#
-#     @classmethod
-#     def mutate(cls, root, info, first_name, last_name): # reserch what root and info are for
-#         supporter = Supporter(first_name=first_name, last_name=last_name)
-#         supporter.save()
-#
-#         return SupportersMutation(supporters=supporters)
+
+class SupportersMutation(graphene.Mutation):
+
+    class Arguments:
+        tag = graphene.String(required=True)
+
+    supporter = graphene.Field(SupportersType)
+
+    @classmethod
+    def mutate(cls, root, info, first_name, last_name): # reserch what root and info are for
+        supporter = Supporters(email=email)
+        supporter.save()
+        return SupporterMutation(supporter=supporter)
+
 
 
 
@@ -67,6 +69,7 @@ class SupportersType(DjangoObjectType):
 class Mutation(graphene.ObjectType):
     add_need = NeedsMutation.Field()
     add_category = CategoriesMutation.Field()
+    add_supporter = SupportersMutation.Field()
 
 class Query(graphene.ObjectType):
 
