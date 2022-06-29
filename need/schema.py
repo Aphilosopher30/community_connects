@@ -3,6 +3,8 @@ from graphene_django import DjangoObjectType
 from .models import Need, Categories, Supporters
 
 
+############
+
 class NeedsType(DjangoObjectType):
     class Meta:
         model = Need
@@ -21,6 +23,7 @@ class NeedsMutation(graphene.Mutation):
 
         return NeedsMutation(need=need)
 
+############
 
 class CategoriesType(DjangoObjectType):
     class Meta:
@@ -42,12 +45,12 @@ class CategoriesMutation(graphene.Mutation):
 
         return CategoriesMutation(category=category)
 
+############
 
 class SupportersType(DjangoObjectType):
     class Meta:
         model = Supporters
         fields = ("id", "first_name", "last_name", "address", "email", "phone", "phone_text")
-
 
 class SupportersMutation(graphene.Mutation):
 
@@ -67,7 +70,13 @@ class SupportersMutation(graphene.Mutation):
         supporter.save()
         return SupportersMutation(supporter=supporter)
 
+############
 
+#need_catagories
+
+############
+
+#supporters_catagories
 
 
 
@@ -89,8 +98,6 @@ class Query(graphene.ObjectType):
     all_supporters = graphene.List(SupportersType)
     def resolve_all_supporters(root, info):
         return Supporters.objects.all()
-
-
 
 
 
