@@ -50,16 +50,15 @@ class Supporters(models.Model):
 
 
 
-# class Supporters(models.Model):
-#     name = models.CharField(max_length=200)
-#     email = models.CharField(max_length=200)
+class SupportersCategories(models.Model):
+    category = models.ForeignKey(Categories, on_delete = models.CASCADE)
+    supporter = models.ForeignKey(Supporters, on_delete = models.CASCADE)
 
-# class what they signed up for supporters_need
+
+
 
 # info on makeing a
 # https://hackernoon.com/using-enum-as-model-field-choice-in-django-92d8b97aaa63
-
-
 
 
 #vonuntere for now add paied connection later.
